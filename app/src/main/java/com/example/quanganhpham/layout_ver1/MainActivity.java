@@ -3,6 +3,7 @@ package com.example.quanganhpham.layout_ver1;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,34 +15,29 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener  {
  ListView list_item;
+    CustomAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.content_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("More Phone");
+        list_item = (ListView) findViewById(R.id.list_contact);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
-        toggle.syncState();
+        adapter = new CustomAdapter(getData(),getLayoutInflater());
+        list_item.setAdapter(adapter);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+
+
+
+
     }
 
     @Override
@@ -100,4 +96,17 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-}
+    public ArrayList<Contact> getData(){
+        ArrayList<Contact> listData = new ArrayList<>();
+        listData.add(new Contact("A","AGRIBANK","Agribank 6/2 TK31244:323"));
+        listData.add(new Contact("E","Ethan Nguyen","Anh khong an com nha"));
+        listData.add(new Contact("+","01234544646","Hello Baby"));
+        listData.add(new Contact("+","01234576476","Bạn cần trợ giúp không"));
+        return listData;
+
+    }
+
+
+
+    }
+
