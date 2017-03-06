@@ -8,7 +8,8 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="row_item_margin">16dp</dimen>
     <dimen name="row_item_layout">70dp</dimen>
-    <dimen name="row_item_size">20sp</dimen>
+    <dimen name="row_item_size">25sp</dimen>
     <dimen name="row_item_margin_left">50dp</dimen>
-    <dimen name="row_item_size_note">15sp</dimen>
+    <dimen name="row_item_size_note">20sp</dimen>
+    <dimen name="row_item_magin_text">32dp</dimen>
 </resources>
